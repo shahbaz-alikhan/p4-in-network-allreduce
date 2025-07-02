@@ -1,0 +1,21 @@
+[W][10.0.0.1][12:23:27.930129] Started...
+[W][10.0.0.1][12:23:27.952135] Worker 0: Starting AllReduce on 32 elements
+[W][10.0.0.1][12:23:28.011474] Worker 0: Sending chunk 0 with values [25959, 7135, 53840, 13388]
+[W][10.0.0.1][12:23:28.081264] Worker 0: Using src_mac=00:00:00:00:01:01, dst_mac=ff:ff:ff:ff:ff:ff, ethertype=0x1234
+[W][10.0.0.1][12:23:28.200985] Worker 0: Packet summary: 00:00:00:00:01:01 > ff:ff:ff:ff:ff:ff (0x1234) / SwitchML
+[W][10.0.0.1][12:23:28.217735] Worker 0: Packet length: 34 bytes
+[W][10.0.0.1][12:23:28.335285] Worker 0: EtherType in packet: 0x1234
+[W][10.0.0.1][12:23:28.467296] Worker 0: Packet sent
+[W][10.0.0.1][12:23:28.525323] Worker 0: Waiting for response to chunk 0
+[W][10.0.0.1][12:23:28.791903] Worker 0: Received SwitchML packet - chunk_id=0, flags=1, expected_chunk=0
+[W][10.0.0.1][12:23:28.843926] Worker 0: Received response for chunk 0: [69518, 81571, 95818, 99553]
+[W][10.0.0.1][12:23:28.859505] Worker 0: Sending chunk 1 with values [45270, 39351, 10833, 43816]
+[W][10.0.0.1][12:23:28.952422] Worker 0: Using src_mac=00:00:00:00:01:01, dst_mac=ff:ff:ff:ff:ff:ff, ethertype=0x1234
+[W][10.0.0.1][12:23:28.969235] Worker 0: Packet summary: 00:00:00:00:01:01 > ff:ff:ff:ff:ff:ff (0x1234) / SwitchML
+[W][10.0.0.1][12:23:29.024522] Worker 0: Packet length: 34 bytes
+[W][10.0.0.1][12:23:29.127099] Worker 0: EtherType in packet: 0x1234
+[W][10.0.0.1][12:23:29.323826] Worker 0: Packet sent
+[W][10.0.0.1][12:23:29.382901] Worker 0: Waiting for response to chunk 1
+[W][10.0.0.1][12:23:39.479818] Worker 0: ERROR - Timeout waiting for chunk 1
+[W][10.0.0.1][12:23:39.492062] AllReduce failed!
+[W][10.0.0.1][12:23:39.502846] Done

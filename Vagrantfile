@@ -36,6 +36,10 @@ Vagrant.configure("2") do |config|
     vb.cpus = 16        # 16 cores
   end
 
+  # Sync the project directory
+  config.vm.synced_folder ".", "/home/vagrant/ans-lab", type: "virtualbox"
+
   # Install the packages and libraries needed by the labs
   config.vm.provision "shell", path: "./scripts/vm-setup.sh"
+
 end

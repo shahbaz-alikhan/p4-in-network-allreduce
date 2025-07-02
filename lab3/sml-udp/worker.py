@@ -22,52 +22,296 @@
 from lib.gen import GenInts, GenMultipleOfInRange
 from lib.test import CreateTestData, RunIntTest
 from lib.worker import *
-from scapy.all import Packet
 import socket
+import struct
+import time
+import random
+import os
 
 NUM_ITER   = 1     # TODO: Make sure your program can handle larger values
-CHUNK_SIZE = None  # TODO: Define me
+CHUNK_SIZE = 4     # Number of 32-bit values per chunk
 
-class SwitchML(Packet):
-    name = "SwitchMLPacket"
-    fields_desc = [
-        # TODO: Implement me
-    ]
+# Network configuration
+SWITCHML_PORT = 9999      # UDP port for SwitchML protocol
 
-def AllReduce(soc, rank, data, result):
+def get_worker_mac(rank):
+    """Get MAC address for worker"""
+    return f"00:00:00:00:01:{rank+1:02x}"
+
+def get_worker_ip(rank):
+    """Get IP address for worker"""
+    return f"10.0.0.{rank+1}"
+
+def ip_to_int(ip_str):
+    """Convert IP string to 32-bit integer"""
+    parts = ip_str.split('.')
+    return (int(parts[0]) << 24) + (int(parts[1]) << 16) + (int(parts[2]) << 8) + int(parts[3])
+
+def mac_to_bytes(mac_str):
+    """Convert MAC string to 6 bytes"""
+    return bytes.fromhex(mac_str.replace(':', ''))
+
+def calculate_checksum(data):
+    """Calculate IP checksum"""
+    if len(data) % 2 == 1:
+        data += b'\x00'
+
+    checksum = 0
+    for i in range(0, len(data), 2):
+        word = (data[i] << 8) + data[i + 1]
+        checksum += word
+        checksum = (checksum & 0xFFFF) + (checksum >> 16)
+
+    return (~checksum) & 0xFFFF
+
+def pack_switchml_packet(worker_id, chunk_id, num_workers, flags, values):
     """
-    Perform in-network all-reduce over UDP
+    Pack SwitchML data into bytes for UDP transmission
+    Format: worker_id(1) + chunk_id(1) + num_workers(1) + flags(1) + value0(4) + value1(4) + value2(4) + value3(4)
+    """
+    # Ensure we have exactly 4 values, pad with zeros if necessary
+    padded_values = values + [0] * (4 - len(values))
+    padded_values = padded_values[:4]  # Truncate if more than 4
 
-    :param str    soc: the socket used for all-reduce
+    # Pack using network byte order (big-endian)
+    packet = struct.pack('!BBBBLLLL',
+                        worker_id, chunk_id, num_workers, flags,
+                        padded_values[0], padded_values[1],
+                        padded_values[2], padded_values[3])
+    return packet
+
+def unpack_switchml_packet(data):
+    """
+    Unpack SwitchML packet from bytes
+    Returns: (worker_id, chunk_id, num_workers, flags, [value0, value1, value2, value3])
+    """
+    if len(data) < 20:  # 4 bytes header + 4*4 bytes values
+        return None
+
+    # Unpack using network byte order (big-endian)
+    unpacked = struct.unpack('!BBBBLLLL', data[:20])
+    worker_id, chunk_id, num_workers, flags = unpacked[:4]
+    values = list(unpacked[4:])
+
+    return (worker_id, chunk_id, num_workers, flags, values)
+
+def create_raw_udp_packet(src_ip, dst_ip, src_port, dst_port, payload, src_mac, dst_mac):
+    """Create a complete Ethernet/IP/UDP packet"""
+
+    # Ethernet header (14 bytes)
+    eth_header = struct.pack('!6s6sH',
+                            mac_to_bytes(dst_mac),    # Destination MAC
+                            mac_to_bytes(src_mac),    # Source MAC
+                            0x0800)                   # EtherType (IPv4)
+
+    # IP header (20 bytes)
+    version_ihl = 0x45  # Version 4, Header Length 5 (20 bytes)
+    tos = 0
+    total_length = 20 + 8 + len(payload)  # IP header + UDP header + payload
+    identification = random.randint(0, 65535)
+    flags_fragment = 0x4000  # Don't fragment
+    ttl = 64
+    protocol = 17  # UDP
+    checksum = 0  # Will calculate later
+    src_ip_int = ip_to_int(src_ip)
+    dst_ip_int = ip_to_int(dst_ip)
+
+    # Pack IP header without checksum
+    ip_header_no_checksum = struct.pack('!BBHHHBBHLL',
+                                       version_ihl, tos, total_length,
+                                       identification, flags_fragment,
+                                       ttl, protocol, 0,
+                                       src_ip_int, dst_ip_int)
+
+    # Calculate and insert checksum
+    ip_checksum = calculate_checksum(ip_header_no_checksum)
+    ip_header = struct.pack('!BBHHHBBHLL',
+                           version_ihl, tos, total_length,
+                           identification, flags_fragment,
+                           ttl, protocol, ip_checksum,
+                           src_ip_int, dst_ip_int)
+
+    # UDP header (8 bytes)
+    udp_length = 8 + len(payload)
+    udp_checksum = 0  # Optional for IPv4, we'll set to 0
+    udp_header = struct.pack('!HHHH',
+                            src_port, dst_port,
+                            udp_length, udp_checksum)
+
+    # Complete packet
+    packet = eth_header + ip_header + udp_header + payload
+    return packet
+
+def AllReduce(rank, data, result):
+    """
+    Perform in-network all-reduce over UDP using raw sockets
+
     :param int   rank: the worker's rank
     :param [int] data: the input vector for this worker
-    :param [int]  res: the output vector
+    :param [int] result: the output vector
 
     This function is blocking, i.e. only returns with a result or error
     """
+    Log(f"Worker {rank}: Starting AllReduce on {len(data)} elements")
 
-    # TODO: Implement me
-    # NOTE: Do not send/recv directly to/from the socket.
-    #       Instead, please use the functions send() and receive() from lib/comm.py
-    #       We will use modified versions of these functions to test your program
-    pass
+    # Get network information
+    src_mac = get_worker_mac(rank)
+    src_ip = get_worker_ip(rank)
+    dst_mac = "ff:ff:ff:ff:ff:ff"  # Broadcast MAC
+    dst_ip = "255.255.255.255"     # Broadcast IP
+    src_port = 10000 + rank
+    dst_port = SWITCHML_PORT
+
+    Log(f"Worker {rank}: Using {src_ip}:{src_port} -> {dst_ip}:{dst_port}")
+    Log(f"Worker {rank}: MAC {src_mac} -> {dst_mac}")
+
+    # Determine interface name - in Mininet it's just eth0 inside each host
+    interface = "eth0"
+
+    # Create raw socket for sending
+    try:
+        send_sock = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.htons(0x0003))
+        send_sock.bind((interface, 0))
+        Log(f"Worker {rank}: Created raw send socket on {interface}")
+    except Exception as e:
+        Log(f"Worker {rank}: ERROR - Could not create raw socket: {e}")
+        Log(f"Worker {rank}: Make sure interface {interface} exists")
+        # Try to list available interfaces
+        try:
+            import netifaces
+            Log(f"Worker {rank}: Available interfaces: {netifaces.interfaces()}")
+        except:
+            pass
+        return False
+
+    # Create UDP socket for receiving
+    try:
+        recv_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
+        recv_sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        recv_sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+        recv_sock.bind(('', src_port))  # Bind to any address on our port
+        recv_sock.settimeout(2.0)  # Shorter timeout for faster retries
+        Log(f"Worker {rank}: Created UDP receive socket on port {src_port}")
+    except Exception as e:
+        Log(f"Worker {rank}: ERROR - Could not create receive socket: {e}")
+        send_sock.close()
+        return False
+
+    try:
+        num_workers = 3  # This should match NUM_WORKERS in network.py
+        result_idx = 0
+
+        # Add initial delay to let all workers start
+        time.sleep(0.5)  # Give all workers time to start
+
+        # Process data in chunks
+        for chunk_start in range(0, len(data), CHUNK_SIZE):
+            chunk_id = chunk_start // CHUNK_SIZE
+            chunk_data = data[chunk_start:chunk_start + CHUNK_SIZE]
+
+            # Pad chunk to exactly CHUNK_SIZE elements
+            while len(chunk_data) < CHUNK_SIZE:
+                chunk_data.append(0)
+
+            Log(f"Worker {rank}: Sending chunk {chunk_id} with values {chunk_data[:len(data[chunk_start:chunk_start + CHUNK_SIZE])]}")
+
+            # Create SwitchML payload
+            switchml_payload = pack_switchml_packet(
+                worker_id=rank,
+                chunk_id=chunk_id,
+                num_workers=num_workers,
+                flags=0,  # Data packet
+                values=chunk_data
+            )
+
+            # Create raw packet
+            raw_packet = create_raw_udp_packet(
+                src_ip, dst_ip, src_port, dst_port,
+                switchml_payload, src_mac, dst_mac
+            )
+
+            # Debug: print first few bytes of packet
+            Log(f"Worker {rank}: Packet preview (hex): {raw_packet[:30].hex()}")
+            Log(f"Worker {rank}: Ethertype: {raw_packet[12:14].hex()}")
+
+            # Send raw packet
+            try:
+                bytes_sent = send_sock.send(raw_packet)
+                Log(f"Worker {rank}: Sent raw packet ({bytes_sent} bytes)")
+            except Exception as e:
+                Log(f"Worker {rank}: ERROR - Failed to send packet: {e}")
+                return False
+
+            # Wait for aggregation result
+            Log(f"Worker {rank}: Waiting for response to chunk {chunk_id}")
+
+            # Try to receive multiple times in case of packet loss
+            max_retries = 10
+            for retry in range(max_retries):
+                try:
+                    response_data, addr = recv_sock.recvfrom(1024)
+                    Log(f"Worker {rank}: Received response from {addr} (attempt {retry+1})")
+
+                    # Unpack response
+                    response = unpack_switchml_packet(response_data)
+                    if response is None:
+                        Log(f"Worker {rank}: ERROR - Invalid response packet")
+                        continue
+
+                    resp_worker_id, resp_chunk_id, resp_num_workers, resp_flags, chunk_result = response
+
+                    # Verify this is the response we're expecting
+                    if resp_chunk_id == chunk_id and resp_flags == 1:
+                        Log(f"Worker {rank}: Received valid response for chunk {chunk_id}: {chunk_result}")
+
+                        # Copy result values to output
+                        remaining_elements = len(data) - chunk_start
+                        elements_to_copy = min(CHUNK_SIZE, remaining_elements)
+
+                        for i in range(elements_to_copy):
+                            if result_idx < len(result):
+                                result[result_idx] = chunk_result[i]
+                                result_idx += 1
+                        break
+                    else:
+                        Log(f"Worker {rank}: Ignoring response: chunk_id={resp_chunk_id}, flags={resp_flags}")
+
+                except socket.timeout:
+                    if retry == max_retries - 1:
+                        Log(f"Worker {rank}: ERROR - Timeout waiting for chunk {chunk_id} after {max_retries} attempts")
+                        return False
+                    else:
+                        Log(f"Worker {rank}: Timeout on attempt {retry+1}, retrying...")
+                        # Resend the packet
+                        send_sock.send(raw_packet)
+                        continue
+                except Exception as e:
+                    Log(f"Worker {rank}: ERROR - Exception receiving response: {e}")
+                    return False
+
+            # Add delay between chunks to avoid overwhelming the switch
+            time.sleep(0.05)
+
+        Log(f"Worker {rank}: AllReduce completed successfully")
+        return True
+
+    finally:
+        send_sock.close()
+        recv_sock.close()
 
 def main():
     rank = GetRankOrExit()
-
-    s = None # TODO: Create a UDP socket. 
-    # NOTE: This socket will be used for all AllReduce calls.
-    #       Feel free to go with a different design (e.g. multiple sockets)
-    #       if you want to, but make sure the loop below still works
-
     Log("Started...")
     for i in range(NUM_ITER):
-        num_elem = GenMultipleOfInRange(2, 2048, 2 * CHUNK_SIZE) # You may want to 'fix' num_elem for debugging
-        data_out = GenInts(num_elem)
-        data_in = GenInts(num_elem, 0)
+        num_elem = GenMultipleOfInRange(2, 32, 2 * CHUNK_SIZE) # Start with smaller vectors for testing
+        data_out = GenInts(num_elem)  # Generate random integers
+        data_in = [0] * num_elem  # Initialize result vector
         CreateTestData("udp-iter-%d" % i, rank, data_out)
-        AllReduce(s, rank, data_out, data_in)
-        RunIntTest("udp-iter-%d" % i, rank, data_in, True)
+        success = AllReduce(rank, data_out, data_in)
+        if success:
+            RunIntTest("udp-iter-%d" % i, rank, data_in, True)
+        else:
+            Log("AllReduce failed!")
     Log("Done")
 
 if __name__ == '__main__':

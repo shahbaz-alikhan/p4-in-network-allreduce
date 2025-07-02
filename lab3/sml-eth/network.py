@@ -25,13 +25,27 @@ from mininet.topo import Topo
 from mininet.cli import CLI
 import os
 
-NUM_WORKERS = 2 # TODO: Make sure your program can handle larger values
+NUM_WORKERS = 3 # TODO: Make sure your program can handle larger values
+
+# Simple logic to allocate IP and MAC addresses based on the worker ID
+def getWorkerIP(wid):
+    return "10.0.0.%d" % (wid + 1)
+
+def getWorkerMAC(wid):
+    return "00:00:00:00:01:%02x" % (wid + 1)
 
 class SMLTopo(Topo):
     def __init__(self, **opts):
         Topo.__init__(self, **opts)
-        # TODO: Implement me. Feel free to modify the constructor signature
-        # NOTE: Make sure worker names are consistent with RunWorkers() below
+
+        # Create the switch
+        sw = self.addSwitch('s1')
+
+        # Create the workers
+        for i in range(NUM_WORKERS):
+            worker = self.addHost(
+                'w%d' % i, ip=getWorkerIP(i), mac=getWorkerMAC(i))
+            self.addLink(worker, sw, port2=i+1)  # Start from port 1
 
 def RunWorkers(net):
     """
@@ -51,10 +65,15 @@ def RunControlPlane(net):
     """
     One-time control plane configuration
     """
-    # TODO: Implement me (if needed)
-    pass
+    sw = net.get('s1')
 
-topo = None # TODO: Create an SMLTopo instance
+    # Create multicast group for broadcasting aggregation results
+    # Include all worker ports (1 to NUM_WORKERS)
+    worker_ports = list(range(1, NUM_WORKERS + 1))
+    sw.addMulticastGroup(mgid=1, ports=worker_ports)
+    print(f"Created multicast group 1 with ports: {worker_ports}")
+
+topo = SMLTopo()
 net = P4Mininet(program="p4/main.p4", topo=topo)
 net.run_control_plane = lambda: RunControlPlane(net)
 net.run_workers = lambda: RunWorkers(net)

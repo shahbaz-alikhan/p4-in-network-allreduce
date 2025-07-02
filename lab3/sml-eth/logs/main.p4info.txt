@@ -1,0 +1,104 @@
+# proto-file: p4/config/v1/p4info.proto
+# proto-message: p4.config.v1.P4Info
+
+pkg_info {
+  arch: "v1model"
+}
+actions {
+  preamble {
+    id: 25652968
+    name: "MyIngress.drop"
+    alias: "drop"
+  }
+}
+actions {
+  preamble {
+    id: 32567258
+    name: "MyIngress.perform_aggregation"
+    alias: "perform_aggregation"
+  }
+}
+actions {
+  preamble {
+    id: 25265748
+    name: "MyIngress.multicast_result"
+    alias: "multicast_result"
+  }
+}
+registers {
+  preamble {
+    id: 374569206
+    name: "MyIngress.agg_value0"
+    alias: "agg_value0"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 369482843
+    name: "MyIngress.agg_value1"
+    alias: "agg_value1"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 384184349
+    name: "MyIngress.agg_value2"
+    alias: "agg_value2"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 372217008
+    name: "MyIngress.agg_value3"
+    alias: "agg_value3"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 372556367
+    name: "MyIngress.agg_count"
+    alias: "agg_count"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 8
+      }
+    }
+  }
+  size: 256
+}
+type_info {
+}

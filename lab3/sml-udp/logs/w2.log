@@ -1,0 +1,80 @@
+[W][10.0.0.3][13:46:45.387681] Started...
+[W][10.0.0.3][13:46:45.424350] Worker 2: Starting AllReduce on 32 elements
+[W][10.0.0.3][13:46:45.434974] Worker 2: Using 10.0.0.3:10002 -> 255.255.255.255:9999
+[W][10.0.0.3][13:46:45.446727] Worker 2: MAC 00:00:00:00:01:03 -> ff:ff:ff:ff:ff:ff
+[W][10.0.0.3][13:46:45.494947] Worker 2: Created raw send socket on eth0
+[W][10.0.0.3][13:46:45.524519] Worker 2: Created UDP receive socket on port 10002
+[W][10.0.0.3][13:46:46.039845] Worker 2: Sending chunk 0 with values [57989, 61035, 43442, 319]
+[W][10.0.0.3][13:46:46.049766] Worker 2: Packet preview (hex): ffffffffffff00000000010308004500003095b0400040119b0a0a000003
+[W][10.0.0.3][13:46:46.057361] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:46:46.065695] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:46:46.124597] Worker 2: Waiting for response to chunk 0
+[W][10.0.0.3][13:46:48.224805] Worker 2: Timeout on attempt 1, retrying...
+[W][10.0.0.3][13:46:50.292611] Worker 2: Timeout on attempt 2, retrying...
+[W][10.0.0.3][13:46:52.340319] Worker 2: Timeout on attempt 3, retrying...
+[W][10.0.0.3][13:46:54.362578] Worker 2: Timeout on attempt 4, retrying...
+[W][10.0.0.3][13:46:54.419442] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 5)
+[W][10.0.0.3][13:46:54.427788] Worker 2: Received valid response for chunk 0: [173967, 183105, 130326, 957]
+[W][10.0.0.3][13:46:54.489048] Worker 2: Sending chunk 1 with values [34135, 18623, 63759, 1736]
+[W][10.0.0.3][13:46:54.499612] Worker 2: Packet preview (hex): ffffffffffff000000000103080045000030a9974000401187230a000003
+[W][10.0.0.3][13:46:54.509843] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:46:54.520736] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:46:54.540266] Worker 2: Waiting for response to chunk 1
+[W][10.0.0.3][13:46:54.581632] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 1)
+[W][10.0.0.3][13:46:54.589202] Worker 2: Received valid response for chunk 1: [38367, 46141, 180271, 13618]
+[W][10.0.0.3][13:46:54.652452] Worker 2: Sending chunk 2 with values [20453, 38344, 34311, 24984]
+[W][10.0.0.3][13:46:54.664117] Worker 2: Packet preview (hex): ffffffffffff000000000103080045000030dc444000401154760a000003
+[W][10.0.0.3][13:46:54.676597] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:46:54.687188] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:46:54.699672] Worker 2: Waiting for response to chunk 2
+[W][10.0.0.3][13:46:54.753520] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 1)
+[W][10.0.0.3][13:46:54.763545] Worker 2: Received valid response for chunk 2: [109647, 114454, 134961, 128726]
+[W][10.0.0.3][13:46:54.825973] Worker 2: Sending chunk 3 with values [40589, 43445, 15353, 3042]
+[W][10.0.0.3][13:46:54.839154] Worker 2: Packet preview (hex): ffffffffffff000000000103080045000030b0144000401180a60a000003
+[W][10.0.0.3][13:46:54.852015] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:46:54.862838] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:46:54.873188] Worker 2: Waiting for response to chunk 3
+[W][10.0.0.3][13:46:56.930881] Worker 2: Timeout on attempt 1, retrying...
+[W][10.0.0.3][13:46:58.943766] Worker 2: Timeout on attempt 2, retrying...
+[W][10.0.0.3][13:47:01.001962] Worker 2: Timeout on attempt 3, retrying...
+[W][10.0.0.3][13:47:03.036364] Worker 2: Timeout on attempt 4, retrying...
+[W][10.0.0.3][13:47:03.118183] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 5)
+[W][10.0.0.3][13:47:03.128083] Worker 2: Received valid response for chunk 3: [121767, 130335, 46059, 9126]
+[W][10.0.0.3][13:47:03.189373] Worker 2: Sending chunk 4 with values [43880, 61009, 43201, 15113]
+[W][10.0.0.3][13:47:03.244487] Worker 2: Packet preview (hex): ffffffffffff000000000103080045000030fc684000401134520a000003
+[W][10.0.0.3][13:47:03.277776] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:47:03.289506] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:47:03.300554] Worker 2: Waiting for response to chunk 4
+[W][10.0.0.3][13:47:05.407112] Worker 2: Timeout on attempt 1, retrying...
+[W][10.0.0.3][13:47:07.480183] Worker 2: Timeout on attempt 2, retrying...
+[W][10.0.0.3][13:47:07.541447] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 3)
+[W][10.0.0.3][13:47:07.555897] Worker 2: Received valid response for chunk 4: [131640, 183027, 129603, 45339]
+[W][10.0.0.3][13:47:07.616428] Worker 2: Sending chunk 5 with values [37248, 57968, 20666, 231]
+[W][10.0.0.3][13:47:07.626045] Worker 2: Packet preview (hex): ffffffffffff0000000001030800450000304bcc40004011e4ee0a000003
+[W][10.0.0.3][13:47:07.682693] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:47:07.698021] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:47:07.743150] Worker 2: Waiting for response to chunk 5
+[W][10.0.0.3][13:47:09.862712] Worker 2: Timeout on attempt 1, retrying...
+[W][10.0.0.3][13:47:11.891826] Worker 2: Timeout on attempt 2, retrying...
+[W][10.0.0.3][13:47:11.957179] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 3)
+[W][10.0.0.3][13:47:11.969639] Worker 2: Received valid response for chunk 5: [111744, 173904, 61998, 693]
+[W][10.0.0.3][13:47:12.035620] Worker 2: Sending chunk 6 with values [10975, 957, 9935, 56610]
+[W][10.0.0.3][13:47:12.099816] Worker 2: Packet preview (hex): ffffffffffff000000000103080045000030886f40004011a84b0a000003
+[W][10.0.0.3][13:47:12.154425] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:47:12.190278] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:47:12.217359] Worker 2: Waiting for response to chunk 6
+[W][10.0.0.3][13:47:14.240349] Worker 2: Timeout on attempt 1, retrying...
+[W][10.0.0.3][13:47:16.259655] Worker 2: Timeout on attempt 2, retrying...
+[W][10.0.0.3][13:47:18.279860] Worker 2: Timeout on attempt 3, retrying...
+[W][10.0.0.3][13:47:20.298693] Worker 2: Timeout on attempt 4, retrying...
+[W][10.0.0.3][13:47:20.366441] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 5)
+[W][10.0.0.3][13:47:20.377680] Worker 2: Received valid response for chunk 6: [32925, 2871, 29805, 169830]
+[W][10.0.0.3][13:47:20.442569] Worker 2: Sending chunk 7 with values [42056, 29210, 50989, 24463]
+[W][10.0.0.3][13:47:20.451008] Worker 2: Packet preview (hex): ffffffffffff000000000103080045000030bcd64000401173e40a000003
+[W][10.0.0.3][13:47:20.457332] Worker 2: Ethertype: 0800
+[W][10.0.0.3][13:47:20.465822] Worker 2: Sent raw packet (62 bytes)
+[W][10.0.0.3][13:47:20.474527] Worker 2: Waiting for response to chunk 7
+[W][10.0.0.3][13:47:20.520464] Worker 2: Received response from ('10.0.0.100', 9999) (attempt 1)
+[W][10.0.0.3][13:47:20.534359] Worker 2: Received valid response for chunk 7: [138170, 109690, 103463, 109061]
+[W][10.0.0.3][13:47:20.598425] Worker 2: AllReduce completed successfully
+[W][10.0.0.3][13:47:20.640123] Done
