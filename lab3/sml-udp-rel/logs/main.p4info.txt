@@ -1,0 +1,193 @@
+# proto-file: p4/config/v1/p4info.proto
+# proto-message: p4.config.v1.P4Info
+
+pkg_info {
+  arch: "v1model"
+}
+actions {
+  preamble {
+    id: 25652968
+    name: "MyIngress.drop"
+    alias: "drop"
+  }
+}
+actions {
+  preamble {
+    id: 32567258
+    name: "MyIngress.perform_aggregation"
+    alias: "perform_aggregation"
+  }
+}
+actions {
+  preamble {
+    id: 25265748
+    name: "MyIngress.multicast_result"
+    alias: "multicast_result"
+  }
+}
+actions {
+  preamble {
+    id: 26323167
+    name: "MyIngress.unicast_result"
+    alias: "unicast_result"
+  }
+}
+actions {
+  preamble {
+    id: 17547417
+    name: "MyIngress.clear_old_state"
+    alias: "clear_old_state"
+  }
+}
+registers {
+  preamble {
+    id: 374569206
+    name: "MyIngress.agg_value0"
+    alias: "agg_value0"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 369482843
+    name: "MyIngress.agg_value1"
+    alias: "agg_value1"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 384184349
+    name: "MyIngress.agg_value2"
+    alias: "agg_value2"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 372217008
+    name: "MyIngress.agg_value3"
+    alias: "agg_value3"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 379951445
+    name: "MyIngress.worker_bitmap"
+    alias: "worker_bitmap"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 8
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 372906243
+    name: "MyIngress.result_value0"
+    alias: "result_value0"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 371336403
+    name: "MyIngress.result_value1"
+    alias: "result_value1"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 378854437
+    name: "MyIngress.result_value2"
+    alias: "result_value2"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 374268313
+    name: "MyIngress.result_value3"
+    alias: "result_value3"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 256
+}
+registers {
+  preamble {
+    id: 380591701
+    name: "MyIngress.result_ready"
+    alias: "result_ready"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 1
+      }
+    }
+  }
+  size: 256
+}
+type_info {
+}

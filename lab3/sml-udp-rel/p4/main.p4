@@ -260,7 +260,10 @@ control MyIngress(inout headers hdr,
         // Prepare for broadcast response
         standard_metadata.mcast_grp = 1;
 
-        // Swap UDP ports for response
+        // For broadcast, we need to send back to the source port of each worker
+        // But since it's multicast, we can't customize per-worker
+        // So we swap ports - workers sent FROM their port TO 9999
+        // Switch sends FROM 9999 TO their port
         bit<16> temp_port = hdr.udp.srcPort;
         hdr.udp.srcPort = hdr.udp.dstPort;
         hdr.udp.dstPort = temp_port;
@@ -275,6 +278,9 @@ control MyIngress(inout headers hdr,
 
         // Update IP header fields
         hdr.ipv4.ttl = 64;
+
+        // Fix IP total length - it needs to include IP header + UDP header + payload
+        hdr.ipv4.totalLen = 20 + 8 + 20;  // 48 bytes total
 
         // Update UDP length (8 bytes header + 20 bytes SwitchML)
         hdr.udp.length = 28;

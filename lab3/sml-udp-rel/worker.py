@@ -160,8 +160,11 @@ def AllReduce(rank, data, result):
     # Get network information
     src_mac = get_worker_mac(rank)
     src_ip = get_worker_ip(rank)
-    dst_mac = "ff:ff:ff:ff:ff:ff"  # Broadcast MAC
-    dst_ip = "255.255.255.255"     # Broadcast IP
+    # Try unicast to switch first to debug
+    dst_mac = "00:00:00:00:01:00"  # Switch MAC
+    dst_ip = "10.0.0.100"           # Switch IP
+    # dst_mac = "ff:ff:ff:ff:ff:ff"  # Broadcast MAC
+    # dst_ip = "255.255.255.255"     # Broadcast IP
     src_port = 10000 + rank
     dst_port = SWITCHML_PORT
 
@@ -236,9 +239,9 @@ def AllReduce(rank, data, result):
                 # Send packet using unreliable_send
                 Log(f"Worker {rank}: Sending chunk {chunk_id} (attempt {retry_count + 1})")
                 try:
-                    # Use unreliable_send with parameters to simulate packet loss
-                    # For testing, you can adjust delay and drop_prob
-                    unreliable_send(send_sock, raw_packet, delay=0.01, drop_prob=0.1)
+                    # Send packet directly for now
+                    bytes_sent = send_sock.send(raw_packet)
+                    Log(f"Worker {rank}: Sent chunk {chunk_id} (attempt {retry_count + 1}, {bytes_sent} bytes)")
                 except Exception as e:
                     Log(f"Worker {rank}: ERROR - Failed to send packet: {e}")
                     retry_count += 1
@@ -249,8 +252,8 @@ def AllReduce(rank, data, result):
 
                 while time.time() - start_time < TIMEOUT:
                     try:
-                        # Use unreliable_receive with parameters
-                        response_data, addr = unreliable_receive(recv_sock, 1024, delay=0.01, drop_prob=0.1)
+                        # Try to receive response
+                        response_data, addr = recv_sock.recvfrom(1024)
 
                         Log(f"Worker {rank}: Received response from {addr}")
 

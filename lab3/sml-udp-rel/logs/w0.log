@@ -1,0 +1,66 @@
+[W][10.0.0.1][15:12:40.914422] Started...
+[W][10.0.0.1][15:12:40.980559] Worker 0: Starting AllReduce on 32 elements
+[W][10.0.0.1][15:12:41.003335] Worker 0: Using 10.0.0.1:10000 -> 10.0.0.100:9999
+[W][10.0.0.1][15:12:41.013522] Worker 0: MAC 00:00:00:00:01:01 -> 00:00:00:00:01:00
+[W][10.0.0.1][15:12:41.044254] Worker 0: Created raw send socket on eth0
+[W][10.0.0.1][15:12:41.057866] Worker 0: Created UDP receive socket on port 10000
+[W][10.0.0.1][15:12:41.607818] Worker 0: Processing chunk 0 with values [59312, 31147, 38326, 10546]
+[W][10.0.0.1][15:12:41.620158] Worker 0: Sending chunk 0 (attempt 1)
+[W][10.0.0.1][15:12:41.633542] Worker 0: Sent chunk 0 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:42.653117] Worker 0: Timeout for chunk 0, retrying...
+[W][10.0.0.1][15:12:42.669247] Worker 0: Sending chunk 0 (attempt 2)
+[W][10.0.0.1][15:12:42.690249] Worker 0: Sent chunk 0 (attempt 2, 62 bytes)
+[W][10.0.0.1][15:12:42.754445] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:42.762732] Worker 0: Received valid response for chunk 0: [157566, 98478, 104954, 78596]
+[W][10.0.0.1][15:12:42.823366] Worker 0: Processing chunk 1 with values [53883, 30883, 54071, 11517]
+[W][10.0.0.1][15:12:42.832252] Worker 0: Sending chunk 1 (attempt 1)
+[W][10.0.0.1][15:12:42.839116] Worker 0: Sent chunk 1 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:43.854166] Worker 0: Timeout for chunk 1, retrying...
+[W][10.0.0.1][15:12:43.868353] Worker 0: Sending chunk 1 (attempt 2)
+[W][10.0.0.1][15:12:43.879151] Worker 0: Sent chunk 1 (attempt 2, 62 bytes)
+[W][10.0.0.1][15:12:43.913212] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:43.925607] Worker 0: Received valid response for chunk 1: [135458, 119955, 82891, 96237]
+[W][10.0.0.1][15:12:44.017957] Worker 0: Processing chunk 2 with values [59558, 21627, 7221, 31935]
+[W][10.0.0.1][15:12:44.033612] Worker 0: Sending chunk 2 (attempt 1)
+[W][10.0.0.1][15:12:44.043369] Worker 0: Sent chunk 2 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:44.096204] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:44.106111] Worker 0: Received valid response for chunk 2: [69696, 78045, 103231, 113912]
+[W][10.0.0.1][15:12:44.173056] Worker 0: Processing chunk 3 with values [30617, 12175, 32567, 44410]
+[W][10.0.0.1][15:12:44.184342] Worker 0: Sending chunk 3 (attempt 1)
+[W][10.0.0.1][15:12:44.200593] Worker 0: Sent chunk 3 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:45.288983] Worker 0: Timeout for chunk 3, retrying...
+[W][10.0.0.1][15:12:45.298041] Worker 0: Sending chunk 3 (attempt 2)
+[W][10.0.0.1][15:12:45.309425] Worker 0: Sent chunk 3 (attempt 2, 62 bytes)
+[W][10.0.0.1][15:12:45.353080] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:45.363577] Worker 0: Received valid response for chunk 3: [111362, 130830, 115661, 91476]
+[W][10.0.0.1][15:12:45.432283] Worker 0: Processing chunk 4 with values [31541, 25637, 47376, 47641]
+[W][10.0.0.1][15:12:45.458242] Worker 0: Sending chunk 4 (attempt 1)
+[W][10.0.0.1][15:12:45.467293] Worker 0: Sent chunk 4 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:46.489421] Worker 0: Timeout for chunk 4, retrying...
+[W][10.0.0.1][15:12:46.502293] Worker 0: Sending chunk 4 (attempt 2)
+[W][10.0.0.1][15:12:46.512541] Worker 0: Sent chunk 4 (attempt 2, 62 bytes)
+[W][10.0.0.1][15:12:46.533066] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:46.543759] Worker 0: Received valid response for chunk 4: [144477, 93676, 115083, 92598]
+[W][10.0.0.1][15:12:46.604090] Worker 0: Processing chunk 5 with values [56532, 13687, 8308, 1093]
+[W][10.0.0.1][15:12:46.615057] Worker 0: Sending chunk 5 (attempt 1)
+[W][10.0.0.1][15:12:46.626032] Worker 0: Sent chunk 5 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:46.704209] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:46.716371] Worker 0: Received valid response for chunk 5: [118989, 76547, 53297, 83636]
+[W][10.0.0.1][15:12:46.778966] Worker 0: Processing chunk 6 with values [26927, 56496, 38337, 5612]
+[W][10.0.0.1][15:12:46.788170] Worker 0: Sending chunk 6 (attempt 1)
+[W][10.0.0.1][15:12:46.799778] Worker 0: Sent chunk 6 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:47.818580] Worker 0: Timeout for chunk 6, retrying...
+[W][10.0.0.1][15:12:47.831878] Worker 0: Sending chunk 6 (attempt 2)
+[W][10.0.0.1][15:12:47.841393] Worker 0: Sent chunk 6 (attempt 2, 62 bytes)
+[W][10.0.0.1][15:12:47.905456] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:47.915083] Worker 0: Received valid response for chunk 6: [51006, 117210, 117309, 54026]
+[W][10.0.0.1][15:12:47.978330] Worker 0: Processing chunk 7 with values [51706, 49117, 4356, 134]
+[W][10.0.0.1][15:12:47.989147] Worker 0: Sending chunk 7 (attempt 1)
+[W][10.0.0.1][15:12:47.999869] Worker 0: Sent chunk 7 (attempt 1, 62 bytes)
+[W][10.0.0.1][15:12:49.028257] Worker 0: Timeout for chunk 7, retrying...
+[W][10.0.0.1][15:12:49.042395] Worker 0: Sending chunk 7 (attempt 2)
+[W][10.0.0.1][15:12:49.052210] Worker 0: Sent chunk 7 (attempt 2, 62 bytes)
+[W][10.0.0.1][15:12:49.118535] Worker 0: Received response from ('10.0.0.100', 9999)
+[W][10.0.0.1][15:12:49.129494] Worker 0: Received valid response for chunk 7: [69459, 94794, 63543, 83725]
+[W][10.0.0.1][15:12:49.198230] Worker 0: AllReduce completed successfully
+[W][10.0.0.1][15:12:49.280604] Done
