@@ -5380,3 +5380,60 @@ Server listening on 0.0.0.0:50051
 [15:16:46.155] [bmv2] [D] [thread 29788] [68.0] [cxt 0] Pipeline 'ingress': end
 [15:16:46.156] [bmv2] [D] [thread 29788] [68.0] [cxt 0] Egress port is 511
 [15:16:46.157] [bmv2] [D] [thread 29788] [68.0] [cxt 0] Dropping packet at the end of ingress
+[15:20:31.369] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Processing packet received on port 2
+[15:20:31.369] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Parser 'parser': start
+[15:20:31.369] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:20:31.370] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Extracting header 'ethernet'
+[15:20:31.370] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Parser state 'start': key is 86dd
+[15:20:31.371] [bmv2] [T] [thread 29788] [69.0] [cxt 0] Bytes parsed: 14
+[15:20:31.371] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Parser 'parser': end
+[15:20:31.372] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Pipeline 'ingress': start
+[15:20:31.372] [bmv2] [T] [thread 29788] [69.0] [cxt 0] /home/vagrant/ans-lab/lab3/sml-udp-rel/p4/main.p4(341) Condition "hdr.ipv4.isValid() && hdr.udp.isValid() && ..." (node_2) is false
+[15:20:31.372] [bmv2] [T] [thread 29788] [69.0] [cxt 0] Applying table 'tbl_drop_1'
+[15:20:31.373] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Looking up key:
+
+[15:20:31.373] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Table 'tbl_drop_1': miss
+[15:20:31.374] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Action entry is MyIngress.drop - 
+[15:20:31.374] [bmv2] [T] [thread 29788] [69.0] [cxt 0] Action MyIngress.drop
+[15:20:31.375] [bmv2] [T] [thread 29788] [69.0] [cxt 0] /home/vagrant/ans-lab/lab3/sml-udp-rel/p4/main.p4(150) Primitive mark_to_drop(standard_metadata)
+[15:20:31.375] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Pipeline 'ingress': end
+[15:20:31.376] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Egress port is 511
+[15:20:31.376] [bmv2] [D] [thread 29788] [69.0] [cxt 0] Dropping packet at the end of ingress
+[15:20:47.751] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Processing packet received on port 1
+[15:20:47.752] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Parser 'parser': start
+[15:20:47.753] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:20:47.753] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Extracting header 'ethernet'
+[15:20:47.754] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Parser state 'start': key is 86dd
+[15:20:47.756] [bmv2] [T] [thread 29788] [70.0] [cxt 0] Bytes parsed: 14
+[15:20:47.756] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Parser 'parser': end
+[15:20:47.757] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Pipeline 'ingress': start
+[15:20:47.758] [bmv2] [T] [thread 29788] [70.0] [cxt 0] /home/vagrant/ans-lab/lab3/sml-udp-rel/p4/main.p4(341) Condition "hdr.ipv4.isValid() && hdr.udp.isValid() && ..." (node_2) is false
+[15:20:47.758] [bmv2] [T] [thread 29788] [70.0] [cxt 0] Applying table 'tbl_drop_1'
+[15:20:47.759] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Looking up key:
+
+[15:20:47.760] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Table 'tbl_drop_1': miss
+[15:20:47.760] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Action entry is MyIngress.drop - 
+[15:20:47.761] [bmv2] [T] [thread 29788] [70.0] [cxt 0] Action MyIngress.drop
+[15:20:47.763] [bmv2] [T] [thread 29788] [70.0] [cxt 0] /home/vagrant/ans-lab/lab3/sml-udp-rel/p4/main.p4(150) Primitive mark_to_drop(standard_metadata)
+[15:20:47.763] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Pipeline 'ingress': end
+[15:20:47.764] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Egress port is 511
+[15:20:47.764] [bmv2] [D] [thread 29788] [70.0] [cxt 0] Dropping packet at the end of ingress
+[15:21:04.121] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Processing packet received on port 3
+[15:21:04.122] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Parser 'parser': start
+[15:21:04.123] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Parser 'parser' entering state 'start'
+[15:21:04.123] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Extracting header 'ethernet'
+[15:21:04.124] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Parser state 'start': key is 86dd
+[15:21:04.124] [bmv2] [T] [thread 29788] [71.0] [cxt 0] Bytes parsed: 14
+[15:21:04.125] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Parser 'parser': end
+[15:21:04.125] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Pipeline 'ingress': start
+[15:21:04.125] [bmv2] [T] [thread 29788] [71.0] [cxt 0] /home/vagrant/ans-lab/lab3/sml-udp-rel/p4/main.p4(341) Condition "hdr.ipv4.isValid() && hdr.udp.isValid() && ..." (node_2) is false
+[15:21:04.126] [bmv2] [T] [thread 29788] [71.0] [cxt 0] Applying table 'tbl_drop_1'
+[15:21:04.126] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Looking up key:
+
+[15:21:04.126] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Table 'tbl_drop_1': miss
+[15:21:04.127] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Action entry is MyIngress.drop - 
+[15:21:04.127] [bmv2] [T] [thread 29788] [71.0] [cxt 0] Action MyIngress.drop
+[15:21:04.127] [bmv2] [T] [thread 29788] [71.0] [cxt 0] /home/vagrant/ans-lab/lab3/sml-udp-rel/p4/main.p4(150) Primitive mark_to_drop(standard_metadata)
+[15:21:04.128] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Pipeline 'ingress': end
+[15:21:04.128] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Egress port is 511
+[15:21:04.128] [bmv2] [D] [thread 29788] [71.0] [cxt 0] Dropping packet at the end of ingress
