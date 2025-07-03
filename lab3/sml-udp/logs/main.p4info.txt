@@ -38,7 +38,7 @@ registers {
       }
     }
   }
-  size: 256
+  size: 1024
 }
 registers {
   preamble {
@@ -53,7 +53,7 @@ registers {
       }
     }
   }
-  size: 256
+  size: 1024
 }
 registers {
   preamble {
@@ -68,7 +68,7 @@ registers {
       }
     }
   }
-  size: 256
+  size: 1024
 }
 registers {
   preamble {
@@ -83,7 +83,7 @@ registers {
       }
     }
   }
-  size: 256
+  size: 1024
 }
 registers {
   preamble {
@@ -98,7 +98,22 @@ registers {
       }
     }
   }
-  size: 256
+  size: 1024
+}
+registers {
+  preamble {
+    id: 378962785
+    name: "MyIngress.session_id"
+    alias: "session_id"
+  }
+  type_spec {
+    bitstring {
+      bit {
+        bitwidth: 32
+      }
+    }
+  }
+  size: 1024
 }
 type_info {
 }

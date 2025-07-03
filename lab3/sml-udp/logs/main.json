@@ -24,7 +24,6 @@
         ["current_val2_0", 32, false],
         ["current_val3_0", 32, false],
         ["current_count_0", 8, false],
-        ["temp_port_0", 16, false],
         ["metadata.is_last_worker", 1, false],
         ["_padding_0", 7, false]
       ]
@@ -308,7 +307,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-        "line" : 279,
+        "line" : 281,
         "column" : 8,
         "source_fragment" : "MyDeparser"
       },
@@ -325,10 +324,10 @@
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
         "line" : 127,
-        "column" : 27,
+        "column" : 28,
         "source_fragment" : "agg_value0"
       },
-      "size" : 256,
+      "size" : 1024,
       "bitwidth" : 32
     },
     {
@@ -337,10 +336,10 @@
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
         "line" : 128,
-        "column" : 27,
+        "column" : 28,
         "source_fragment" : "agg_value1"
       },
-      "size" : 256,
+      "size" : 1024,
       "bitwidth" : 32
     },
     {
@@ -349,10 +348,10 @@
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
         "line" : 129,
-        "column" : 27,
+        "column" : 28,
         "source_fragment" : "agg_value2"
       },
-      "size" : 256,
+      "size" : 1024,
       "bitwidth" : 32
     },
     {
@@ -361,10 +360,10 @@
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
         "line" : 130,
-        "column" : 27,
+        "column" : 28,
         "source_fragment" : "agg_value3"
       },
-      "size" : 256,
+      "size" : 1024,
       "bitwidth" : 32
     },
     {
@@ -373,11 +372,23 @@
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
         "line" : 131,
-        "column" : 26,
+        "column" : 27,
         "source_fragment" : "agg_count"
       },
-      "size" : 256,
+      "size" : 1024,
       "bitwidth" : 8
+    },
+    {
+      "name" : "MyIngress.session_id",
+      "id" : 5,
+      "source_info" : {
+        "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+        "line" : 134,
+        "column" : 28,
+        "source_fragment" : "session_id"
+      },
+      "size" : 1024,
+      "bitwidth" : 32
     }
   ],
   "calculations" : [
@@ -386,7 +397,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-        "line" : 260,
+        "line" : 262,
         "column" : 8,
         "source_fragment" : "update_checksum( ..."
       },
@@ -456,7 +467,7 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 134,
+            "line" : 137,
             "column" : 8,
             "source_fragment" : "mark_to_drop(standard_metadata)"
           }
@@ -478,7 +489,7 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 134,
+            "line" : 137,
             "column" : 8,
             "source_fragment" : "mark_to_drop(standard_metadata)"
           }
@@ -517,8 +528,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 147,
-            "column" : 38,
+            "line" : 151,
+            "column" : 34,
             "source_fragment" : "reg_index"
           }
         },
@@ -540,8 +551,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 147,
-            "column" : 8,
+            "line" : 151,
+            "column" : 4,
             "source_fragment" : "agg_value0.read(current_val0, reg_index)"
           }
         },
@@ -572,8 +583,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 148,
-            "column" : 38,
+            "line" : 152,
+            "column" : 34,
             "source_fragment" : "reg_index"
           }
         },
@@ -595,8 +606,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 148,
-            "column" : 8,
+            "line" : 152,
+            "column" : 4,
             "source_fragment" : "agg_value1.read(current_val1, reg_index)"
           }
         },
@@ -627,8 +638,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 149,
-            "column" : 38,
+            "line" : 153,
+            "column" : 34,
             "source_fragment" : "reg_index"
           }
         },
@@ -650,8 +661,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 149,
-            "column" : 8,
+            "line" : 153,
+            "column" : 4,
             "source_fragment" : "agg_value2.read(current_val2, reg_index)"
           }
         },
@@ -682,8 +693,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 150,
-            "column" : 38,
+            "line" : 154,
+            "column" : 34,
             "source_fragment" : "reg_index"
           }
         },
@@ -705,8 +716,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 150,
-            "column" : 8,
+            "line" : 154,
+            "column" : 4,
             "source_fragment" : "agg_value3.read(current_val3, reg_index)"
           }
         },
@@ -737,8 +748,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 151,
-            "column" : 38,
+            "line" : 155,
+            "column" : 34,
             "source_fragment" : "reg_index"
           }
         },
@@ -760,8 +771,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 151,
-            "column" : 8,
+            "line" : 155,
+            "column" : 4,
             "source_fragment" : "agg_count.read(current_count, reg_index)"
           }
         },
@@ -802,8 +813,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 154,
-            "column" : 8,
+            "line" : 158,
+            "column" : 4,
             "source_fragment" : "current_val0 = current_val0 + hdr.switchml.value0"
           }
         },
@@ -844,8 +855,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 155,
-            "column" : 8,
+            "line" : 159,
+            "column" : 4,
             "source_fragment" : "current_val1 = current_val1 + hdr.switchml.value1"
           }
         },
@@ -886,8 +897,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 156,
-            "column" : 8,
+            "line" : 160,
+            "column" : 4,
             "source_fragment" : "current_val2 = current_val2 + hdr.switchml.value2"
           }
         },
@@ -928,8 +939,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 157,
-            "column" : 8,
+            "line" : 161,
+            "column" : 4,
             "source_fragment" : "current_val3 = current_val3 + hdr.switchml.value3"
           }
         },
@@ -970,8 +981,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 158,
-            "column" : 8,
+            "line" : 162,
+            "column" : 4,
             "source_fragment" : "current_count = current_count + 1"
           }
         },
@@ -1002,8 +1013,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 161,
-            "column" : 25,
+            "line" : 165,
+            "column" : 21,
             "source_fragment" : "reg_index"
           }
         },
@@ -1025,8 +1036,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 161,
-            "column" : 8,
+            "line" : 165,
+            "column" : 4,
             "source_fragment" : "agg_value0.write(reg_index, current_val0)"
           }
         },
@@ -1057,8 +1068,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 162,
-            "column" : 25,
+            "line" : 166,
+            "column" : 21,
             "source_fragment" : "reg_index"
           }
         },
@@ -1080,8 +1091,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 162,
-            "column" : 8,
+            "line" : 166,
+            "column" : 4,
             "source_fragment" : "agg_value1.write(reg_index, current_val1)"
           }
         },
@@ -1112,8 +1123,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 163,
-            "column" : 25,
+            "line" : 167,
+            "column" : 21,
             "source_fragment" : "reg_index"
           }
         },
@@ -1135,8 +1146,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 163,
-            "column" : 8,
+            "line" : 167,
+            "column" : 4,
             "source_fragment" : "agg_value2.write(reg_index, current_val2)"
           }
         },
@@ -1167,8 +1178,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 164,
-            "column" : 25,
+            "line" : 168,
+            "column" : 21,
             "source_fragment" : "reg_index"
           }
         },
@@ -1190,8 +1201,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 164,
-            "column" : 8,
+            "line" : 168,
+            "column" : 4,
             "source_fragment" : "agg_value3.write(reg_index, current_val3)"
           }
         },
@@ -1222,8 +1233,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 165,
-            "column" : 24,
+            "line" : 169,
+            "column" : 20,
             "source_fragment" : "reg_index"
           }
         },
@@ -1245,8 +1256,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 165,
-            "column" : 8,
+            "line" : 169,
+            "column" : 4,
             "source_fragment" : "agg_count.write(reg_index, current_count)"
           }
         },
@@ -1254,8 +1265,8 @@
           "op" : "_jump_if_zero",
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 168,
-            "column" : 8,
+            "line" : 172,
+            "column" : 4,
             "source_fragment" : "if"
           },
           "parameters" : [
@@ -1303,8 +1314,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 170,
-            "column" : 12,
+            "line" : 174,
+            "column" : 8,
             "source_fragment" : "hdr.switchml.value0 = current_val0"
           }
         },
@@ -1322,8 +1333,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 171,
-            "column" : 12,
+            "line" : 175,
+            "column" : 8,
             "source_fragment" : "hdr.switchml.value1 = current_val1"
           }
         },
@@ -1341,8 +1352,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 172,
-            "column" : 12,
+            "line" : 176,
+            "column" : 8,
             "source_fragment" : "hdr.switchml.value2 = current_val2"
           }
         },
@@ -1360,8 +1371,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 173,
-            "column" : 12,
+            "line" : 177,
+            "column" : 8,
             "source_fragment" : "hdr.switchml.value3 = current_val3"
           }
         },
@@ -1379,8 +1390,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 174,
-            "column" : 12,
+            "line" : 178,
+            "column" : 8,
             "source_fragment" : "hdr.switchml.flags = 1"
           }
         },
@@ -1411,8 +1422,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 177,
-            "column" : 29,
+            "line" : 181,
+            "column" : 25,
             "source_fragment" : "reg_index"
           }
         },
@@ -1434,8 +1445,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 177,
-            "column" : 12,
+            "line" : 181,
+            "column" : 8,
             "source_fragment" : "agg_value0.write(reg_index, 0)"
           }
         },
@@ -1466,8 +1477,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 178,
-            "column" : 29,
+            "line" : 182,
+            "column" : 25,
             "source_fragment" : "reg_index"
           }
         },
@@ -1489,8 +1500,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 178,
-            "column" : 12,
+            "line" : 182,
+            "column" : 8,
             "source_fragment" : "agg_value1.write(reg_index, 0)"
           }
         },
@@ -1521,8 +1532,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 179,
-            "column" : 29,
+            "line" : 183,
+            "column" : 25,
             "source_fragment" : "reg_index"
           }
         },
@@ -1544,8 +1555,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 179,
-            "column" : 12,
+            "line" : 183,
+            "column" : 8,
             "source_fragment" : "agg_value2.write(reg_index, 0)"
           }
         },
@@ -1576,8 +1587,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 180,
-            "column" : 29,
+            "line" : 184,
+            "column" : 25,
             "source_fragment" : "reg_index"
           }
         },
@@ -1599,8 +1610,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 180,
-            "column" : 12,
+            "line" : 184,
+            "column" : 8,
             "source_fragment" : "agg_value3.write(reg_index, 0)"
           }
         },
@@ -1631,8 +1642,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 181,
-            "column" : 28,
+            "line" : 185,
+            "column" : 24,
             "source_fragment" : "reg_index"
           }
         },
@@ -1654,8 +1665,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 181,
-            "column" : 12,
+            "line" : 185,
+            "column" : 8,
             "source_fragment" : "agg_count.write(reg_index, 0)"
           }
         },
@@ -1673,8 +1684,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 183,
-            "column" : 12,
+            "line" : 187,
+            "column" : 8,
             "source_fragment" : "meta.is_last_worker = 1"
           }
         },
@@ -1682,8 +1693,8 @@
           "op" : "_jump",
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 168,
-            "column" : 8,
+            "line" : 172,
+            "column" : 4,
             "source_fragment" : "if"
           },
           "parameters" : [
@@ -1707,8 +1718,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 185,
-            "column" : 12,
+            "line" : 189,
+            "column" : 8,
             "source_fragment" : "meta.is_last_worker = 0"
           }
         }
@@ -1733,66 +1744,9 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 191,
-            "column" : 8,
-            "source_fragment" : "standard_metadata.mcast_grp = 1"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["scalars", "temp_port_0"]
-            },
-            {
-              "type" : "field",
-              "value" : ["udp", "srcPort"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 194,
-            "column" : 8,
-            "source_fragment" : "bit<16> temp_port = hdr.udp.srcPort"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["udp", "srcPort"]
-            },
-            {
-              "type" : "field",
-              "value" : ["udp", "dstPort"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
             "line" : 195,
-            "column" : 8,
-            "source_fragment" : "hdr.udp.srcPort = hdr.udp.dstPort"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["udp", "dstPort"]
-            },
-            {
-              "type" : "field",
-              "value" : ["scalars", "temp_port_0"]
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 196,
-            "column" : 8,
-            "source_fragment" : "hdr.udp.dstPort = temp_port"
+            "column" : 4,
+            "source_fragment" : "standard_metadata.mcast_grp = 1"
           }
         },
         {
@@ -1809,8 +1763,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 199,
-            "column" : 8,
+            "line" : 198,
+            "column" : 4,
             "source_fragment" : "hdr.ipv4.srcAddr = 0x0a000064"
           }
         },
@@ -1828,8 +1782,8 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 200,
-            "column" : 8,
+            "line" : 199,
+            "column" : 4,
             "source_fragment" : "hdr.ethernet.srcAddr = 0x000000000100"
           }
         },
@@ -1838,37 +1792,18 @@
           "parameters" : [
             {
               "type" : "field",
-              "value" : ["ipv4", "dstAddr"]
+              "value" : ["udp", "srcPort"]
             },
             {
               "type" : "hexstr",
-              "value" : "0xffffffff"
+              "value" : "0x270f"
             }
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 203,
-            "column" : 8,
-            "source_fragment" : "hdr.ipv4.dstAddr = 0xffffffff"
-          }
-        },
-        {
-          "op" : "assign",
-          "parameters" : [
-            {
-              "type" : "field",
-              "value" : ["ethernet", "dstAddr"]
-            },
-            {
-              "type" : "hexstr",
-              "value" : "0xffffffffffff"
-            }
-          ],
-          "source_info" : {
-            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 204,
-            "column" : 8,
-            "source_fragment" : "hdr.ethernet.dstAddr = 0xffffffffffff"
+            "line" : 200,
+            "column" : 4,
+            "source_fragment" : "hdr.udp.srcPort = 9999"
           }
         },
         {
@@ -1885,9 +1820,28 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 207,
-            "column" : 8,
+            "line" : 206,
+            "column" : 4,
             "source_fragment" : "hdr.ipv4.ttl = 64"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "totalLen"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0030"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 209,
+            "column" : 4,
+            "source_fragment" : "hdr.ipv4.totalLen = 48"
           }
         },
         {
@@ -1904,9 +1858,201 @@
           ],
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 210,
-            "column" : 8,
+            "line" : 212,
+            "column" : 4,
             "source_fragment" : "hdr.udp.length = 28"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "main241",
+      "id" : 4,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dstAddr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0a000001"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 241,
+            "column" : 16,
+            "source_fragment" : "hdr.ipv4.dstAddr = 0x0a000001"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000101"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 242,
+            "column" : 16,
+            "source_fragment" : "hdr.ethernet.dstAddr = 0x000000000101"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "dstPort"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2710"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 243,
+            "column" : 16,
+            "source_fragment" : "hdr.udp.dstPort = 10000"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "main246",
+      "id" : 5,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dstAddr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0a000002"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 246,
+            "column" : 16,
+            "source_fragment" : "hdr.ipv4.dstAddr = 0x0a000002"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000102"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 247,
+            "column" : 16,
+            "source_fragment" : "hdr.ethernet.dstAddr = 0x000000000102"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "dstPort"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2711"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 248,
+            "column" : 16,
+            "source_fragment" : "hdr.udp.dstPort = 10001"
+          }
+        }
+      ]
+    },
+    {
+      "name" : "main251",
+      "id" : 6,
+      "runtime_data" : [],
+      "primitives" : [
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ipv4", "dstAddr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x0a000003"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 251,
+            "column" : 16,
+            "source_fragment" : "hdr.ipv4.dstAddr = 0x0a000003"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["ethernet", "dstAddr"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x000000000103"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 252,
+            "column" : 16,
+            "source_fragment" : "hdr.ethernet.dstAddr = 0x000000000103"
+          }
+        },
+        {
+          "op" : "assign",
+          "parameters" : [
+            {
+              "type" : "field",
+              "value" : ["udp", "dstPort"]
+            },
+            {
+              "type" : "hexstr",
+              "value" : "0x2712"
+            }
+          ],
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 253,
+            "column" : 16,
+            "source_fragment" : "hdr.udp.dstPort = 10002"
           }
         }
       ]
@@ -1929,7 +2075,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 232,
+            "line" : 218,
             "column" : 12,
             "source_fragment" : "perform_aggregation()"
           },
@@ -1958,7 +2104,7 @@
           "id" : 1,
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 234,
+            "line" : 220,
             "column" : 16,
             "source_fragment" : "multicast_result()"
           },
@@ -1987,7 +2133,7 @@
           "id" : 2,
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 236,
+            "line" : 222,
             "column" : 16,
             "source_fragment" : "drop()"
           },
@@ -2016,7 +2162,7 @@
           "id" : 3,
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 239,
+            "line" : 225,
             "column" : 12,
             "source_fragment" : "drop()"
           },
@@ -2048,7 +2194,7 @@
           "id" : 0,
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 230,
+            "line" : 216,
             "column" : 12,
             "source_fragment" : "hdr.ipv4.isValid() && hdr.udp.isValid() && ..."
           },
@@ -2125,7 +2271,7 @@
           "id" : 1,
           "source_info" : {
             "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-            "line" : 233,
+            "line" : 219,
             "column" : 16,
             "source_fragment" : "meta.is_last_worker == 1"
           },
@@ -2153,14 +2299,207 @@
       "id" : 1,
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-        "line" : 245,
+        "line" : 231,
         "column" : 8,
         "source_fragment" : "MyEgress"
       },
-      "init_table" : null,
-      "tables" : [],
+      "init_table" : "node_10",
+      "tables" : [
+        {
+          "name" : "tbl_main241",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 241,
+            "column" : 33,
+            "source_fragment" : "= 0x0a000001; // 10.0.0.1 ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [4],
+          "actions" : ["main241"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "main241" : null
+          },
+          "default_entry" : {
+            "action_id" : 4,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_main246",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 246,
+            "column" : 33,
+            "source_fragment" : "= 0x0a000002; // 10.0.0.2 ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [5],
+          "actions" : ["main246"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "main246" : null
+          },
+          "default_entry" : {
+            "action_id" : 5,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        },
+        {
+          "name" : "tbl_main251",
+          "id" : 6,
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 251,
+            "column" : 33,
+            "source_fragment" : "= 0x0a000003; // 10.0.0.3 ..."
+          },
+          "key" : [],
+          "match_type" : "exact",
+          "type" : "simple",
+          "max_size" : 1024,
+          "with_counters" : false,
+          "support_timeout" : false,
+          "direct_meters" : null,
+          "action_ids" : [6],
+          "actions" : ["main251"],
+          "base_default_next" : null,
+          "next_tables" : {
+            "main251" : null
+          },
+          "default_entry" : {
+            "action_id" : 6,
+            "action_const" : true,
+            "action_data" : [],
+            "action_entry_const" : true
+          }
+        }
+      ],
       "action_profiles" : [],
-      "conditionals" : []
+      "conditionals" : [
+        {
+          "name" : "node_10",
+          "id" : 2,
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 237,
+            "column" : 12,
+            "source_fragment" : "standard_metadata.mcast_grp == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["standard_metadata", "mcast_grp"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0001"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "node_11"
+        },
+        {
+          "name" : "node_11",
+          "id" : 3,
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 239,
+            "column" : 16,
+            "source_fragment" : "standard_metadata.egress_port == 1"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["standard_metadata", "egress_port"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0001"
+              }
+            }
+          },
+          "true_next" : "tbl_main241",
+          "false_next" : "node_13"
+        },
+        {
+          "name" : "node_13",
+          "id" : 4,
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 244,
+            "column" : 23,
+            "source_fragment" : "standard_metadata.egress_port == 2"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["standard_metadata", "egress_port"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0002"
+              }
+            }
+          },
+          "true_next" : "tbl_main246",
+          "false_next" : "node_15"
+        },
+        {
+          "name" : "node_15",
+          "id" : 5,
+          "source_info" : {
+            "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
+            "line" : 249,
+            "column" : 23,
+            "source_fragment" : "standard_metadata.egress_port == 3"
+          },
+          "expression" : {
+            "type" : "expression",
+            "value" : {
+              "op" : "==",
+              "left" : {
+                "type" : "field",
+                "value" : ["standard_metadata", "egress_port"]
+              },
+              "right" : {
+                "type" : "hexstr",
+                "value" : "0x0003"
+              }
+            }
+          },
+          "false_next" : null,
+          "true_next" : "tbl_main251"
+        }
+      ]
     }
   ],
   "checksums" : [
@@ -2169,7 +2508,7 @@
       "id" : 0,
       "source_info" : {
         "filename" : "/home/vagrant/ans-lab/lab3/sml-udp/p4/main.p4",
-        "line" : 260,
+        "line" : 262,
         "column" : 8,
         "source_fragment" : "update_checksum( ..."
       },

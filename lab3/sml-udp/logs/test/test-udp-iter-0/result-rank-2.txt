@@ -1,8 +1,6 @@
-[+] Running test: udp-iter-0, rank: 2, ts: 15:02:37.961313
+[+] Running test: udp-iter-0, rank: 2, ts: 08:35:18.566532
 [+] From data files:
 	/home/vagrant/ans-lab/lab3/sml-udp/logs/test/test-udp-iter-0/data-rank-0.csv
 	/home/vagrant/ans-lab/lab3/sml-udp/logs/test/test-udp-iter-0/data-rank-1.csv
 	/home/vagrant/ans-lab/lab3/sml-udp/logs/test/test-udp-iter-0/data-rank-2.csv
-[+] Result:
-	FAIL: Expected 51223, got 44700, at index 0
-	...31 more failures omitted
+[+] Result: PASS
